@@ -1,0 +1,1001 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jewelry Planners - Home</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        /* ===== GLOBAL STYLES ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --gold: #D4AF37;
+            --white: #FFFFFF;
+            --dark: #2C2C2C;
+            --light-gray: #F5F5F5;
+            --transition: all 0.3s ease;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            color: var(--dark);
+            line-height: 1.6;
+            background-color: var(--white);
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* ===== NAVIGATION ===== */
+        header {
+            background-color: var(--white);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--gold);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            font-weight: 400;
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--gold);
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover {
+            color: var(--gold);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .nav-links a.active {
+            color: var(--gold);
+        }
+
+        /* ===== HERO SECTION ===== */
+        .hero {
+            margin-top: 80px;
+            height: 90vh;
+            background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?w=1600');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: var(--white);
+        }
+
+        .hero-content h1 {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .hero-content p {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 1rem 2.5rem;
+            background-color: var(--gold);
+            color: var(--white);
+            border-radius: 50px;
+            font-weight: 600;
+            transition: var(--transition);
+            border: 2px solid var(--gold);
+        }
+
+        .btn:hover {
+            background-color: transparent;
+            border-color: var(--white);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+
+        /* ===== SECTIONS ===== */
+        section {
+            padding: 5rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 3rem;
+            margin-bottom: 3rem;
+            color: var(--gold);
+        }
+
+        /* ===== INTRO SECTION ===== */
+        .intro {
+            background-color: var(--light-gray);
+            text-align: center;
+        }
+
+        .intro p {
+            max-width: 800px;
+            margin: 0 auto;
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+
+        /* ===== FEATURED PRODUCTS ===== */
+        .featured-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .featured-item {
+            background-color: var(--white);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: var(--transition);
+        }
+
+        .featured-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(212,175,55,0.3);
+        }
+
+        .featured-item img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+        }
+
+        .featured-info {
+            padding: 1.5rem;
+            text-align: center;
+        }
+
+        .featured-info h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+            color: var(--gold);
+        }
+
+        /* ===== ABOUT PAGE ===== */
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+            margin-bottom: 4rem;
+        }
+
+        .about-text h3 {
+            font-size: 2rem;
+            color: var(--gold);
+            margin-bottom: 1rem;
+        }
+
+        .about-text p {
+            margin-bottom: 1rem;
+            line-height: 1.8;
+        }
+
+        .about-img {
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .value-card {
+            background-color: var(--light-gray);
+            padding: 2rem;
+            border-radius: 10px;
+            text-align: center;
+            transition: var(--transition);
+        }
+
+        .value-card:hover {
+            background-color: var(--gold);
+            color: var(--white);
+            transform: scale(1.05);
+        }
+
+        .value-card h4 {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+        }
+
+        /* ===== PRODUCTS PAGE ===== */
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2.5rem;
+        }
+
+        .product-card {
+            background-color: var(--white);
+            border: 2px solid var(--light-gray);
+            border-radius: 10px;
+            overflow: hidden;
+            transition: var(--transition);
+        }
+
+        .product-card:hover {
+            border-color: var(--gold);
+            box-shadow: 0 10px 25px rgba(212,175,55,0.2);
+        }
+
+        .product-card img {
+            width: 100%;
+            height: 350px;
+            object-fit: cover;
+        }
+
+        .product-info {
+            padding: 1.5rem;
+        }
+
+        .product-info h3 {
+            font-size: 1.8rem;
+            color: var(--gold);
+            margin-bottom: 0.5rem;
+        }
+
+        .product-info p {
+            color: #666;
+        }
+
+        /* ===== SERVICES PAGE ===== */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .service-card {
+            background: linear-gradient(135deg, var(--light-gray) 0%, var(--white) 100%);
+            padding: 2.5rem;
+            border-radius: 10px;
+            border-left: 4px solid var(--gold);
+            transition: var(--transition);
+        }
+
+        .service-card:hover {
+            transform: translateX(10px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .service-card h3 {
+            font-size: 1.8rem;
+            color: var(--gold);
+            margin-bottom: 1rem;
+        }
+
+        .service-card ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .service-card li {
+            padding: 0.5rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .service-card li::before {
+            content: '◆';
+            position: absolute;
+            left: 0;
+            color: var(--gold);
+        }
+
+        /* ===== CONTACT PAGE ===== */
+        .contact-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+        }
+
+        .contact-form {
+            background-color: var(--light-gray);
+            padding: 2.5rem;
+            border-radius: 10px;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: var(--dark);
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.8rem;
+            border: 2px solid #ddd;
+            border-radius: 5px;
+            font-family: 'Poppins', sans-serif;
+            transition: var(--transition);
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--gold);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .contact-info {
+            padding: 2rem;
+        }
+
+        .contact-info h3 {
+            font-size: 2rem;
+            color: var(--gold);
+            margin-bottom: 2rem;
+        }
+
+        .info-item {
+            margin-bottom: 2rem;
+            padding-left: 2rem;
+            position: relative;
+        }
+
+        .info-item::before {
+            content: '●';
+            position: absolute;
+            left: 0;
+            color: var(--gold);
+            font-size: 1.5rem;
+        }
+
+        .info-item h4 {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        /* ===== GALLERY PAGE ===== */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            aspect-ratio: 1;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+
+        .gallery-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to top, rgba(212,175,55,0.9), transparent);
+            display: flex;
+            align-items: flex-end;
+            padding: 1.5rem;
+            opacity: 0;
+            transition: var(--transition);
+        }
+
+        .gallery-item:hover .gallery-overlay {
+            opacity: 1;
+        }
+
+        .gallery-overlay h4 {
+            color: var(--white);
+            font-size: 1.3rem;
+        }
+
+        /* ===== FOOTER ===== */
+        footer {
+            background-color: var(--dark);
+            color: var(--white);
+            padding: 3rem 2rem 1rem;
+            margin-top: 5rem;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h3 {
+            color: var(--gold);
+            margin-bottom: 1rem;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .social-icon {
+            width: 40px;
+            height: 40px;
+            background-color: var(--gold);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+        }
+
+        .social-icon:hover {
+            background-color: var(--white);
+            color: var(--gold);
+            transform: translateY(-3px);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+
+        /* ===== RESPONSIVE DESIGN ===== */
+        @media (max-width: 768px) {
+            .nav-links {
+                gap: 1rem;
+                font-size: 0.9rem;
+            }
+
+            .logo {
+                font-size: 1.3rem;
+            }
+
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero-content p {
+                font-size: 1.2rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .about-content,
+            .contact-container {
+                grid-template-columns: 1fr;
+            }
+
+            section {
+                padding: 3rem 1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            nav {
+                flex-direction: column;
+                gap: 1rem;
+                padding: 1rem;
+            }
+
+            .nav-links {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .hero {
+                height: 70vh;
+            }
+
+            .hero-content h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <header>
+        <nav>
+            <div class="logo">Jewelry Planners</div>
+            <ul class="nav-links">
+                <li><a href="#home" class="active">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#products">Products</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#gallery">Gallery</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- HOME PAGE -->
+    <div id="home">
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="hero-content">
+                <h1>Crafting Dreams in Gold</h1>
+                <p>Where luxury meets timeless craftsmanship</p>
+                <a href="#products" class="btn">Explore Collection</a>
+            </div>
+        </section>
+
+        <!-- Intro Section -->
+        <section class="intro">
+            <h2 class="section-title">Welcome to Jewelry Planners</h2>
+            <p>At Jewelry Planners, we transform raw gold and precious stones into exquisite works of art. We source and purchase the finest raw materials directly, ensuring authenticity and quality from the very beginning. Each piece is meticulously handcrafted with passion, precision, and an unwavering commitment to excellence. Our jewelry isn't just worn—it's treasured for generations.</p>
+        </section>
+
+        <!-- Featured Products -->
+        <section>
+            <h2 class="section-title">Featured Collection</h2>
+            <div class="featured-grid">
+                <div class="featured-item">
+                    <img src="https://images.unsplash.com/photo-1605100804763-247f67b3557e?w=600" alt="Elegant Ring">
+                    <div class="featured-info">
+                        <h3>Diamond Rings</h3>
+                        <p>Timeless elegance in every detail</p>
+                    </div>
+                </div>
+                <div class="featured-item">
+                    <img src="https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?w=600" alt="Gold Necklace">
+                    <div class="featured-info">
+                        <h3>Gold Necklaces</h3>
+                        <p>Luxurious designs for special moments</p>
+                    </div>
+                </div>
+                <div class="featured-item">
+                    <img src="https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?w=600" alt="Earrings">
+                    <div class="featured-info">
+                        <h3>Designer Earrings</h3>
+                        <p>Sophistication that sparkles</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- ABOUT PAGE -->
+    <div id="about" style="display:none;">
+        <section style="margin-top: 100px;">
+            <h2 class="section-title">About Jewelry Planners</h2>
+            
+            <div class="about-content">
+                <div class="about-text">
+                    <h3>Our Story</h3>
+                    <p>Founded in 1985, Jewelry Planners began as a small workshop with a grand vision: to create jewelry that tells a story. For nearly four decades, we've been transforming raw materials into pieces that capture life's most precious moments.</p>
+                    <p>We personally source and purchase raw gold and precious stones from trusted suppliers worldwide, ensuring every material meets our exacting standards. Our master craftsmen combine traditional techniques with contemporary design, ensuring each piece is both timeless and modern. From sourcing the finest materials to the final polish, every step reflects our dedication to perfection.</p>
+                </div>
+                <div class="about-img">
+                    <img src="https://images.unsplash.com/photo-1617038260897-41a1f14a8ca0?w=800" alt="Jewelry Workshop">
+                </div>
+            </div>
+
+            <h3 class="section-title" style="margin-top: 4rem;">Our Values</h3>
+            <div class="values-grid">
+                <div class="value-card">
+                    <h4>Excellence</h4>
+                    <p>We never compromise on quality. Every piece undergoes rigorous quality checks to meet our exacting standards.</p>
+                </div>
+                <div class="value-card">
+                    <h4>Craftsmanship</h4>
+                    <p>Our artisans are masters of their craft, bringing decades of experience to every creation.</p>
+                </div>
+                <div class="value-card">
+                    <h4>Authenticity</h4>
+                    <p>We use only genuine materials, ensuring your jewelry is as authentic as it is beautiful.</p>
+                </div>
+                <div class="value-card">
+                    <h4>Innovation</h4>
+                    <p>While honoring tradition, we embrace new techniques and designs to stay ahead of trends.</p>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- PRODUCTS PAGE -->
+    <div id="products" style="display:none;">
+        <section style="margin-top: 100px;">
+            <h2 class="section-title">Our Collections</h2>
+            
+            <div class="products-grid">
+                <div class="product-card">
+                    <img src="https://images.unsplash.com/photo-1605100804763-247f67b3557e?w=600" alt="Diamond Rings">
+                    <div class="product-info">
+                        <h3>Diamond Rings</h3>
+                        <p>Exquisite diamond rings crafted to perfection. From engagement rings to statement pieces, each ring is designed to capture hearts and celebrate love.</p>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <img src="https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?w=600" alt="Gold Necklaces">
+                    <div class="product-info">
+                        <h3>Gold Necklaces</h3>
+                        <p>Luxurious gold necklaces in various designs. From delicate chains to bold statement pieces that elevate any outfit.</p>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <img src="https://images.unsplash.com/photo-1611591437281-460bfbe1220a?w=600" alt="Bracelets">
+                    <div class="product-info">
+                        <h3>Gold Bracelets</h3>
+                        <p>Elegant bracelets that combine style and sophistication. Perfect for everyday wear or special occasions.</p>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <img src="https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?w=600" alt="Earrings">
+                    <div class="product-info">
+                        <h3>Designer Earrings</h3>
+                        <p>Stunning earrings featuring precious stones and intricate metalwork. From subtle studs to dramatic drops.</p>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <img src="https://images.unsplash.com/photo-1603561591411-07134e71a2a9?w=600" alt="Gemstone Collection">
+                    <div class="product-info">
+                        <h3>Gemstone Collection</h3>
+                        <p>Rare and beautiful gemstones set in custom-designed pieces. Each stone is carefully selected for its unique character.</p>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <img src="https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?w=600" alt="Wedding Bands">
+                    <div class="product-info">
+                        <h3>Wedding Bands</h3>
+                        <p>Timeless wedding bands that symbolize eternal love. Classic designs and contemporary styles available.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- SERVICES PAGE -->
+    <div id="services" style="display:none;">
+        <section style="margin-top: 100px;">
+            <h2 class="section-title">Our Services</h2>
+            
+            <div class="services-grid">
+                <div class="service-card">
+                    <h3>Custom Jewelry Design</h3>
+                    <p>Bring your vision to life with our bespoke jewelry design service. Our expert designers work closely with you to create one-of-a-kind pieces that reflect your personal style.</p>
+                    <ul>
+                        <li>Personal consultation</li>
+                        <li>3D design rendering</li>
+                        <li>Material selection guidance</li>
+                        <li>Prototype creation</li>
+                    </ul>
+                </div>
+                <div class="service-card">
+                    <h3>Gold Crafting</h3>
+                    <p>We purchase raw gold bullion and transform it into stunning jewelry pieces. Using traditional goldsmithing techniques combined with modern technology, we maintain complete control over quality from raw material to finished piece.</p>
+                    <ul>
+                        <li>Raw gold sourcing and purchasing</li>
+                        <li>18K and 24K gold work</li>
+                        <li>Gold alloying and mixing</li>
+                        <li>Intricate filigree work</li>
+                        <li>Hand-forged designs</li>
+                    </ul>
+                </div>
+                <div class="service-card">
+                    <h3>Stone Cutting & Setting</h3>
+                    <p>We purchase raw precious stones and gemstones directly from mines and trusted sources. Our master gemologists and setters ensure every stone is cut to perfection and securely set to maximize its brilliance.</p>
+                    <ul>
+                        <li>Raw stone sourcing and purchasing</li>
+                        <li>Precision stone cutting</li>
+                        <li>Prong, bezel, and pave setting</li>
+                        <li>Stone certification and grading</li>
+                    </ul>
+                </div>
+                <div class="service-card">
+                    <h3>Jewelry Repair & Restoration</h3>
+                    <p>Restore your treasured pieces to their original glory. We handle everything from simple repairs to complete restorations.</p>
+                    <ul>
+                        <li>Ring resizing and repairs</li>
+                        <li>Chain and clasp repairs</li>
+                        <li>Stone replacement</li>
+                        <li>Polishing and refinishing</li>
+                    </ul>
+                </div>
+                <div class="service-card">
+                    <h3>Appraisal Services</h3>
+                    <p>Professional jewelry appraisal for insurance, estate planning, or resale purposes by certified gemologists.</p>
+                    <ul>
+                        <li>Certified appraisals</li>
+                        <li>Insurance documentation</li>
+                        <li>Estate valuations</li>
+                        <li>Gemstone authentication</li>
+                    </ul>
+                </div>
+                <div class="service-card">
+                    <h3>Engraving Services</h3>
+                    <p>Add a personal touch with our professional engraving service. Perfect for commemorating special occasions.</p>
+                    <ul>
+                        <li>Hand engraving</li>
+                        <li>Laser engraving</li>
+                        <li>Custom fonts and designs</li>
+                        <li>Message personalization</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- GALLERY PAGE -->
+    <div id="gallery" style="display:none;">
+        <section style="margin-top: 100px;">
+            <h2 class="section-title">Our Gallery</h2>
+            
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1605100804763-247f67b3557e?w=600" alt="Ring Collection">
+                    <div class="gallery-overlay">
+                        <h4>Diamond Rings</h4>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?w=600" alt="Necklace">
+                    <div class="gallery-overlay">
+                        <h4>Gold Necklaces</h4>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?w=600" alt="Jewelry Set">
+                    <div class="gallery-overlay">
+                        <h4>Bridal Collection</h4>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?w=600" alt="Earrings">
+                    <div class="gallery-overlay">
+                        <h4>Designer Earrings</h4>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1611591437281-460bfbe1220a?w=600" alt="Bracelet">
+                    <div class="gallery-overlay">
+                        <h4>Gold Bracelets</h4>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1603561591411-07134e71a2a9?w=600" alt="Gemstones">
+                    <div class="gallery-overlay">
+                        <h4>Precious Stones</h4>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1617038260897-41a1f14a8ca0?w=600" alt="Crafting">
+                    <div class="gallery-overlay">
+                        <h4>Our Craftsmanship</h4>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1573408301185-9146fe634ad0?w=600" alt="Luxury Ring">
+                    <div class="gallery-overlay">
+                        <h4>Luxury Collection</h4>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1622434641406-a158123450f9?w=600" alt="Pearl Jewelry">
+                    <div class="gallery-overlay">
+                        <h4>Pearl Elegance</h4>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- CONTACT PAGE -->
+    <div id="contact" style="display:none;">
+        <section style="margin-top: 100px;">
+            <h2 class="section-title">Get In Touch</h2>
+            
+            <div class="contact-container">
+                <div class="contact-form">
+                    <h3 style="color: var(--gold); margin-bottom: 1.5rem;">Send Us a Message</h3>
+                    <form>
+                        <div class="form-group">
+                            <label for="name">Full Name</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email Address</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Phone Number</label>
+                            <input type="tel" id="phone" name="phone">
+                        </div>
+                        <div class="form-group">
+                            <label for="subject">Subject</label>
+                            <input type="text" id="subject" name="subject" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Message</label>
+                            <textarea id="message" name="message" required></textarea>
+                        </div>
+                        <button type="submit" class="btn">Send Message</button>
+                    </form>
+                </div>
+
+                <div class="contact-info">
+                    <h3>Contact Information</h3>
+                    
+                    <div class="info-item">
+                        <h4>Address</h4>
+                        <p>123 Luxury Lane<br>Gold District<br>New York, NY 10001</p>
+                    </div>
+
+                    <div class="info-item">
+                        <h4>Phone</h4>
+                        <p>+1 (555) 123-4567<br>+1 (555) 987-6543</p>
+                    </div>
+
+                    <div class="info-item">
+                        <h4>Email</h4>
+                        <p>info@jewelryplanners.com<br>design@jewelryplanners.com</p>
+                    </div>
+
+                    <div class="info-item">
+                        <h4>Business Hours</h4>
+                        <p>Monday - Friday: 9:00 AM - 6:00 PM<br>
+                        Saturday: 10:00 AM - 4:00 PM<br>
+                        Sunday: Closed</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Jewelry Planners</h3>
+                <p>Crafting dreams in gold since 1985. We transform precious materials into timeless treasures that celebrate life's most beautiful moments.</p>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul style="list-style: none;">
+                    <li style="margin-bottom: 0.5rem;"><a href="#home" style="transition: var(--transition);">Home</a></li>
+                    <li style="margin-bottom: 0.5rem;"><a href="#about" style="transition: var(--transition);">About Us</a></li>
+                    <li style="margin-bottom: 0.5rem;"><a href="#products" style="transition: var(--transition);">Products</a></li>
+                    <li style="margin-bottom: 0.5rem;"><a href="#services" style="transition: var(--transition);">Services</a></li>
+                    <li style="margin-bottom: 0.5rem;"><a href="#contact" style="transition: var(--transition);">Contact</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Follow Us</h3>
+                <div class="social-icons">
+                    <a href="#" class="social-icon" title="Facebook">f</a>
+                    <a href="#" class="social-icon" title="Instagram">i</a>
+                    <a href="#" class="social-icon" title="Twitter">t</a>
+                    <a href="#" class="social-icon" title="Pinterest">p</a>
+                </div>
+                <p style="margin-top: 1rem;">Stay connected for the latest designs and exclusive offers.</p>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p>&copy; 2025 Jewelry Planners. All rights reserved. Handcrafted with passion.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Simple page navigation without external JS
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                // Get all page sections
+                const pages = ['home', 'about', 'products', 'services', 'gallery', 'contact'];
+                const targetPage = this.getAttribute('href').substring(1);
+                
+                // Hide all pages
+                pages.forEach(page => {
+                    const element = document.getElementById(page);
+                    if (element) {
+                        element.style.display = 'none';
+                    }
+                });
+                
+                // Show target page
+                const targetElement = document.getElementById(targetPage);
+                if (targetElement) {
+                    targetElement.style.display = 'block';
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                }
+                
+                // Update active nav link
+                document.querySelectorAll('.nav-links a').forEach(link => {
+                    link.classList.remove('active');
+                });
+                this.classList.add('active');
+            });
+        });
+    </script>
+</body>
+</html>
